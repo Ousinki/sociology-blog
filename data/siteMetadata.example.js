@@ -6,22 +6,22 @@ const siteMetadata = {
   description: '探索社会现象，分析社会趋势，用数据讲述社会故事',
   language: 'zh-CN',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://your-blog.vercel.app', // 部署后更新为实际 URL
+  siteUrl: 'https://your-site.vercel.app', // 部署后更新为实际 URL
   siteRepo: 'https://github.com/your-username/sociology-blog', // 更新为您的 GitHub 仓库
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
   mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'your-email@example.com', // 更新为您的邮箱
-  github: 'https://github.com',
-  x: 'https://twitter.com/x',
+  github: 'https://github.com/your-username', // 更新为您的 GitHub
+  x: 'https://twitter.com/your-handle', // 更新为您的 X/Twitter
   // twitter: 'https://twitter.com/Twitter',
-  facebook: 'https://facebook.com',
-  youtube: 'https://youtube.com',
-  linkedin: 'https://www.linkedin.com',
-  threads: 'https://www.threads.net',
-  instagram: 'https://www.instagram.com',
-  medium: 'https://medium.com',
-  bluesky: 'https://bsky.app/',
+  facebook: 'https://facebook.com/your-profile',
+  youtube: 'https://youtube.com/@your-channel',
+  linkedin: 'https://www.linkedin.com/in/your-profile',
+  threads: 'https://www.threads.net/@your-handle',
+  instagram: 'https://www.instagram.com/your-handle',
+  medium: 'https://medium.com/@your-handle',
+  bluesky: 'https://bsky.app/profile/your-handle',
   locale: 'zh-CN',
   // set to true if you want a navbar fixed to the top
   stickyNav: false,
