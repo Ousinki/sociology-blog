@@ -10,6 +10,7 @@ import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import PlainCalloutHandler from '@/components/PlainCalloutHandler'
+import TOCSidebar from '@/components/TOCSidebar'
 
 const editUrl = (path) => `${siteMetadata.siteRepo}/blob/main/data/${path}`
 const discussUrl = (path) =>
@@ -31,7 +32,7 @@ interface LayoutProps {
 }
 
 export default function PostLayout({ content, authorDetails, next, prev, children }: LayoutProps) {
-  const { filePath, path, slug, date, title, tags } = content
+  const { filePath, path, slug, date, title, tags, toc } = content
   const basePath = path.split('/')[0]
 
   return (
@@ -92,7 +93,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   ))}
                 </ul>
               </dd>
-              {/* Table of Contents */}
+              {/* Tags */}
               {tags && (
                 <div className="pt-8">
                   <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
@@ -104,6 +105,10 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                     ))}
                   </div>
                 </div>
+              )}
+              {/* Table of Contents */}
+              {toc && Array.isArray(toc) && toc.length > 0 && (
+                <TOCSidebar toc={toc} />
               )}
             </dl>
             <div className="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0 dark:divide-gray-700">

@@ -1,8 +1,6 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import Link from 'next/link'
-import { useI18n } from '@/lib/i18n'
 
 interface TocHeading {
   value: string
@@ -19,7 +17,6 @@ export default function TOCSidebar({ toc }: TOCSidebarProps) {
   const [isFixed, setIsFixed] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const [initialTop, setInitialTop] = useState(0)
-  const { t } = useI18n()
 
   // 过滤掉 h1，只保留 h2 和 h3
   const filteredToc = toc?.filter((heading) => heading.depth === 2 || heading.depth === 3) || []
@@ -88,7 +85,7 @@ export default function TOCSidebar({ toc }: TOCSidebarProps) {
         className="pt-4"
       >
         <h2 className="mb-3 text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-          {t('toc.title')}
+          Contents
         </h2>
         <nav className="space-y-2 pr-2">
           {filteredToc.map((heading) => (
