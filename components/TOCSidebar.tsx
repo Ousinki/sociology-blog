@@ -88,7 +88,7 @@ export default function TOCSidebar({ toc }: TOCSidebarProps) {
         className="pt-4"
       >
         <h2 className="mb-3 text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-          {t('common.tableOfContents')}
+          {t('toc.title')}
         </h2>
         <nav className="space-y-2 pr-2">
           {filteredToc.map((heading) => (
