@@ -11,7 +11,7 @@ interface TranslatedTextProps {
 export default function TranslatedText({ id, fallback, params }: TranslatedTextProps) {
   const { t } = useTranslation()
   const text = t(id, params)
-  
+
   // If translation not found, use fallback or the key itself
   return <>{text === id && fallback ? fallback : text}</>
 }

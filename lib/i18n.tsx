@@ -29,7 +29,7 @@ const loadMessages = async (locale: Locale): Promise<Messages> => {
 // Flatten nested messages object
 const flattenMessages = (messages: Messages, prefix = ''): Record<string, string> => {
   const result: Record<string, string> = {}
-  
+
   for (const [key, value] of Object.entries(messages)) {
     const newKey = prefix ? `${prefix}.${key}` : key
     if (typeof value === 'string') {
@@ -38,7 +38,7 @@ const flattenMessages = (messages: Messages, prefix = ''): Record<string, string
       Object.assign(result, flattenMessages(value, newKey))
     }
   }
-  
+
   return result
 }
 
@@ -75,22 +75,18 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
   const t = (key: string, params?: Record<string, string>): string => {
     let text = messages[key] || key
-    
+
     // Replace placeholders like {name} with actual values
     if (params) {
       for (const [param, value] of Object.entries(params)) {
         text = text.replace(new RegExp(`\\{${param}\\}`, 'g'), value)
       }
     }
-    
+
     return text
   }
 
-  return (
-    <I18nContext.Provider value={{ locale, setLocale, t }}>
-      {children}
-    </I18nContext.Provider>
-  )
+  return <I18nContext.Provider value={{ locale, setLocale, t }}>{children}</I18nContext.Provider>
 }
 
 // Hook to use i18n

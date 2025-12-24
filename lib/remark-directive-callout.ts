@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Plugin } from 'unified'
 import type { Root } from 'mdast'
 import { visit } from 'unist-util-visit'
@@ -210,4 +211,3 @@ export const remarkDirectiveCallout: Plugin<[], Root> = () => {
 }
 
 export default remarkDirectiveCallout
-

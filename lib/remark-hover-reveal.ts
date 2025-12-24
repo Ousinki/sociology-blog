@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Plugin } from 'unified'
 import type { Root, Text, Paragraph } from 'mdast'
 import { visit } from 'unist-util-visit'
@@ -36,9 +37,7 @@ export const remarkHoverReveal: Plugin<[], Root> = () => {
             newChildren.push({
               type: 'mdxJsxTextElement',
               name: 'span',
-              attributes: [
-                { type: 'mdxJsxAttribute', name: 'className', value: 'hover-reveal' },
-              ],
+              attributes: [{ type: 'mdxJsxAttribute', name: 'className', value: 'hover-reveal' }],
               children: [
                 {
                   type: 'mdxJsxTextElement',

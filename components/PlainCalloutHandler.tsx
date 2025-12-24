@@ -8,12 +8,12 @@ export default function PlainCalloutHandler() {
       const target = e.target as HTMLElement
       const title = target.closest('.callout-title')
       if (!title) return
-      
+
       const callout = title.closest('.collapsible-callout, .directive-callout')
       if (!callout) return
-      
+
       if (!callout.classList.contains('is-collapsible')) return
-      
+
       callout.classList.toggle('is-collapsed')
     }
 

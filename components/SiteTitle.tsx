@@ -15,7 +15,7 @@ export default function SiteTitle({ title, href = '/' }: SiteTitleProps) {
   return (
     <Link href={href} aria-label={displayTitle}>
       <div className="flex items-center justify-between">
-        <div className="mr-3 text-xl font-semibold text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+        <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 mr-3 text-xl font-semibold">
           {displayTitle}
         </div>
       </div>

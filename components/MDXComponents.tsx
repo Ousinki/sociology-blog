@@ -18,4 +18,3 @@ export const components: MDXComponents = {
   SociologyLineChart,
   SociologyPieChart,
 }
-

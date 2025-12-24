@@ -22,7 +22,7 @@ export default function NavLinks({ links, className = '' }: NavLinksProps) {
         <Link
           key={link.title}
           href={link.href}
-          className={`hidden font-medium text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400 sm:block ${className}`}
+          className={`hover:text-primary-500 dark:hover:text-primary-400 hidden font-medium text-gray-900 sm:block dark:text-gray-100 ${className}`}
         >
           {t(`nav.${link.title.toLowerCase()}`) || link.title}
         </Link>
