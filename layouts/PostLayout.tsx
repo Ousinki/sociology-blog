@@ -123,31 +123,31 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   <Comments slug={slug} />
                 </div>
               )}
-              {/* Previous/Next Articles moved here */}
+              {/* Previous/Next Articles */}
               {(next || prev) && (
                 <div className="divide-gray-200 py-8 dark:divide-gray-700">
                   <div className="grid grid-cols-2 gap-8">
-                    {prev && prev.path && (
+                    {next && next.path && (
                       <div>
                         <h2 className="mb-2 text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
                           Previous Article
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                          <Link href={`/${prev.path}`} className="flex items-center gap-1">
+                          <Link href={`/${next.path}`} className="flex items-center gap-1">
                             <span>←</span>
-                            <span>{prev.title}</span>
+                            <span>{next.title}</span>
                           </Link>
                         </div>
                       </div>
                     )}
-                    {next && next.path && (
-                      <div className={`${prev ? '' : 'col-start-2'} text-right`}>
+                    {prev && prev.path && (
+                      <div className={`${next ? '' : 'col-start-2'} text-right`}>
                         <h2 className="mb-2 text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
                           Next Article
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                          <Link href={`/${next.path}`} className="inline-flex items-center gap-1">
-                            <span>{next.title}</span>
+                          <Link href={`/${prev.path}`} className="inline-flex items-center gap-1">
+                            <span>{prev.title}</span>
                             <span>→</span>
                           </Link>
                         </div>
