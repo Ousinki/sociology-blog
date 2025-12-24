@@ -8,6 +8,10 @@ import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import { remarkAlert } from 'remark-github-blockquote-alert'
+import remarkDirective from 'remark-directive'
+import { remarkDirectiveCallout } from './lib/remark-directive-callout'
+import { remarkPlainCallout } from './lib/remark-plain-callout'
+import { remarkHoverReveal } from './lib/remark-hover-reveal'
 import {
   remarkExtractFrontmatter,
   remarkCodeTitles,
@@ -158,7 +162,11 @@ export default makeSource({
       remarkCodeTitles,
       remarkMath,
       remarkImgToJsx,
+      remarkDirective,
+      remarkDirectiveCallout,
+      // remarkPlainCallout, // Temporarily disabled for debugging
       remarkAlert,
+      remarkHoverReveal,
     ],
     rehypePlugins: [
       rehypeSlug,

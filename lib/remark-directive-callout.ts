@@ -208,3 +208,6 @@ export const remarkDirectiveCallout: Plugin<[], Root> = () => {
     })
   }
 }
+
+export default remarkDirectiveCallout
+
