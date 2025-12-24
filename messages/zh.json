@@ -1,0 +1,51 @@
+{
+  "site": {
+    "title": "社会学研究博客",
+    "description": "探索社会现象，分析社会趋势"
+  },
+  "nav": {
+    "home": "首页",
+    "blog": "博客",
+    "projects": "项目",
+    "tags": "标签",
+    "about": "关于"
+  },
+  "blog": {
+    "title": "博客",
+    "description": "所有文章",
+    "readMore": "阅读更多",
+    "publishedOn": "发布于",
+    "readingTime": "阅读时间",
+    "minutes": "分钟",
+    "previous": "上一篇",
+    "next": "下一篇",
+    "backToBlog": "返回博客"
+  },
+  "toc": {
+    "title": "目录"
+  },
+  "search": {
+    "placeholder": "搜索文章..."
+  },
+  "theme": {
+    "light": "浅色模式",
+    "dark": "深色模式",
+    "system": "跟随系统"
+  },
+  "shortcuts": {
+    "title": "键盘快捷键",
+    "search": "搜索",
+    "toggleTheme": "切换主题",
+    "goHome": "返回首页",
+    "goBlog": "前往博客",
+    "showHelp": "显示帮助",
+    "closePanel": "关闭面板"
+  },
+  "comments": {
+    "title": "评论",
+    "loadComments": "加载评论"
+  },
+  "footer": {
+    "poweredBy": "由 {name} 驱动"
+  }
+}

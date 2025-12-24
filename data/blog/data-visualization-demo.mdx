@@ -1,0 +1,74 @@
+---
+title: '社会学数据可视化示例'
+date: '2025-12-24'
+tags: ['数据可视化', '社会学', '教程']
+draft: false
+summary: '本文演示如何在博客文章中使用图表组件展示社会学研究数据。'
+---
+
+# 社会学数据可视化
+
+本文展示如何在博客中嵌入交互式图表。
+
+## 调查结果展示
+
+以下是一个社会态度调查的结果：
+
+<SociologyBarChart
+  data={[
+    { category: '非常同意', value: 245 },
+    { category: '同意', value: 387 },
+    { category: '中立', value: 156 },
+    { category: '不同意', value: 98 },
+    { category: '非常不同意', value: 54 },
+  ]}
+  dataKey="value"
+  title="社会态度调查结果（N=940）"
+  xAxisLabel="态度类别"
+  yAxisLabel="人数"
+  color="#3b82f6"
+/>
+
+### 数据解读
+
+从上图可以看出，大多数受访者持正面态度（同意+非常同意占67.2%）。
+
+## 教育程度分布
+
+<SociologyPieChart
+  data={[
+    { name: '研究生及以上', value: 156 },
+    { name: '本科', value: 423 },
+    { name: '专科', value: 287 },
+    { name: '高中/中专', value: 198 },
+  ]}
+  title="受访者教育程度分布"
+  colors={['#3b82f6', '#10b981', '#f59e0b', '#ef4444']}
+/>
+
+## 人口趋势变化
+
+<SociologyLineChart
+  data={[
+    { year: '2020', 城市人口: 936, 农村人口: 531 },
+    { year: '2021', 城市人口: 960, 农村人口: 516 },
+    { year: '2022', 城市人口: 985, 农村人口: 502 },
+    { year: '2023', 城市人口: 1010, 农村人口: 487 },
+    { year: '2024', 城市人口: 1035, 农村人口: 473 },
+  ]}
+  dataKeys={['城市人口', '农村人口']}
+  title="城乡人口变化趋势"
+  xAxisLabel="年份"
+  yAxisLabel="人口（万人）"
+  colors={['#3b82f6', '#ef4444']}
+/>
+
+## 总结
+
+使用预设的图表组件，可以轻松在博客文章中展示数据可视化。
+
+### 可用组件
+
+- `SociologyBarChart` - 条形图
+- `SociologyLineChart` - 折线图
+- `SociologyPieChart` - 饼图

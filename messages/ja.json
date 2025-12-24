@@ -1,0 +1,51 @@
+{
+  "site": {
+    "title": "社会学研究ブログ",
+    "description": "社会現象と傾向を探る"
+  },
+  "nav": {
+    "home": "ホーム",
+    "blog": "ブログ",
+    "projects": "プロジェクト",
+    "tags": "タグ",
+    "about": "概要"
+  },
+  "blog": {
+    "title": "ブログ",
+    "description": "すべての記事",
+    "readMore": "続きを読む",
+    "publishedOn": "公開日",
+    "readingTime": "読了時間",
+    "minutes": "分",
+    "previous": "前へ",
+    "next": "次へ",
+    "backToBlog": "ブログに戻る"
+  },
+  "toc": {
+    "title": "目次"
+  },
+  "search": {
+    "placeholder": "記事を検索..."
+  },
+  "theme": {
+    "light": "ライトモード",
+    "dark": "ダークモード",
+    "system": "システム"
+  },
+  "shortcuts": {
+    "title": "キーボードショートカット",
+    "search": "検索",
+    "toggleTheme": "テーマ切替",
+    "goHome": "ホームへ",
+    "goBlog": "ブログへ",
+    "showHelp": "ヘルプを表示",
+    "closePanel": "パネルを閉じる"
+  },
+  "comments": {
+    "title": "コメント",
+    "loadComments": "コメントを読み込む"
+  },
+  "footer": {
+    "poweredBy": "{name} によって動作"
+  }
+}

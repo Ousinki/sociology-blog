@@ -1,0 +1,51 @@
+{
+  "site": {
+    "title": "Sociology Research Blog",
+    "description": "Exploring social phenomena and trends"
+  },
+  "nav": {
+    "home": "Home",
+    "blog": "Blog",
+    "projects": "Projects",
+    "tags": "Tags",
+    "about": "About"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "All posts",
+    "readMore": "Read more",
+    "publishedOn": "Published on",
+    "readingTime": "Reading time",
+    "minutes": "min",
+    "previous": "Previous",
+    "next": "Next",
+    "backToBlog": "Back to Blog"
+  },
+  "toc": {
+    "title": "Table of Contents"
+  },
+  "search": {
+    "placeholder": "Search articles..."
+  },
+  "theme": {
+    "light": "Light mode",
+    "dark": "Dark mode",
+    "system": "System"
+  },
+  "shortcuts": {
+    "title": "Keyboard Shortcuts",
+    "search": "Search",
+    "toggleTheme": "Toggle theme",
+    "goHome": "Go to home",
+    "goBlog": "Go to blog",
+    "showHelp": "Show help",
+    "closePanel": "Close panel"
+  },
+  "comments": {
+    "title": "Comments",
+    "loadComments": "Load Comments"
+  },
+  "footer": {
+    "poweredBy": "Powered by {name}"
+  }
+}
