@@ -1,26 +1,18 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { useTranslation } from '@/lib/i18n'
+import { useState, useEffect, useRef } from 'react'
 
-interface Shortcut {
-  key: string
-  description: string
-  action?: () => void
-}
-
-const shortcuts: Shortcut[] = [
-  { key: '/', description: 'shortcuts.search' },
-  { key: 't', description: 'shortcuts.toggleTheme' },
-  { key: 'h', description: 'shortcuts.goHome' },
-  { key: 'b', description: 'shortcuts.goBlog' },
-  { key: '?', description: 'shortcuts.showHelp' },
-  { key: 'Esc', description: 'shortcuts.closePanel' },
+const shortcuts = [
+  { key: 'gg', description: 'Go to top' },
+  { key: 'G', description: 'Go to bottom' },
+  { key: 'Space', description: 'Toggle shortcuts' },
+  { key: 'Esc', description: 'Close' },
 ]
 
 export default function KeyboardShortcuts() {
   const [isOpen, setIsOpen] = useState(false)
-  const { t } = useTranslation()
+  const lastKeyRef = useRef<string>('')
+  const lastKeyTimeRef = useRef<number>(0)
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -32,14 +24,46 @@ export default function KeyboardShortcuts() {
         return
       }
 
-      if (e.key === '?' && !e.ctrlKey && !e.metaKey) {
-        e.preventDefault()
-        setIsOpen((prev) => !prev)
+      const now = Date.now()
+      
+      // Handle 'gg' - scroll to top
+      if (e.key === 'g') {
+        if (lastKeyRef.current === 'g' && now - lastKeyTimeRef.current < 500) {
+          e.preventDefault()
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+          lastKeyRef.current = ''
+        } else {
+          lastKeyRef.current = 'g'
+          lastKeyTimeRef.current = now
+        }
+        return
       }
 
+      // Handle 'G' - scroll to bottom
+      if (e.key === 'G' && e.shiftKey) {
+        e.preventDefault()
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
+        lastKeyRef.current = ''
+        return
+      }
+
+      // Handle Space - toggle shortcuts panel
+      if (e.key === ' ' && !e.ctrlKey && !e.metaKey) {
+        e.preventDefault()
+        setIsOpen((prev) => !prev)
+        lastKeyRef.current = ''
+        return
+      }
+
+      // Handle Escape - close panel
       if (e.key === 'Escape') {
         setIsOpen(false)
+        lastKeyRef.current = ''
+        return
       }
+
+      // Reset last key for other keys
+      lastKeyRef.current = ''
     }
 
     document.addEventListener('keydown', handleKeyDown)
@@ -49,30 +73,26 @@ export default function KeyboardShortcuts() {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-      <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-xl dark:bg-gray-800">
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
-            {t('shortcuts.title') || 'Keyboard Shortcuts'}
-          </h2>
-          <button
-            onClick={() => setIsOpen(false)}
-            className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
-          >
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-        <div className="space-y-2">
+    <div 
+      className="fixed bottom-0 left-0 right-0 z-50 animate-slide-up"
+      onClick={() => setIsOpen(false)}
+    >
+      <div 
+        className="mx-auto max-w-2xl rounded-t-2xl bg-white/95 p-6 shadow-[0_-8px_30px_rgba(0,0,0,0.15)] backdrop-blur-sm dark:bg-gray-800/95 dark:shadow-[0_-8px_30px_rgba(0,0,0,0.4)]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <h2 className="mb-4 text-center text-lg font-semibold text-gray-900 dark:text-gray-100">
+          ⌨️ Keyboard Shortcuts
+        </h2>
+        <div className="grid grid-cols-2 gap-3">
           {shortcuts.map((shortcut) => (
-            <div key={shortcut.key} className="flex items-center justify-between py-1">
-              <span className="text-gray-600 dark:text-gray-300">
-                {t(shortcut.description) || shortcut.description}
-              </span>
-              <kbd className="rounded bg-gray-100 px-2 py-1 font-mono text-sm dark:bg-gray-700">
+            <div key={shortcut.key} className="flex items-center justify-between rounded-lg bg-gray-50 px-3 py-2 dark:bg-gray-700/50">
+              <kbd className="rounded bg-gray-200 px-2 py-0.5 font-mono text-xs font-medium text-gray-800 dark:bg-gray-600 dark:text-gray-200">
                 {shortcut.key}
               </kbd>
+              <span className="ml-2 text-sm text-gray-600 dark:text-gray-300">
+                {shortcut.description}
+              </span>
             </div>
           ))}
         </div>
