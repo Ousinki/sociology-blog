@@ -29,53 +29,27 @@ const Moon = () => (
   </svg>
 )
 
-const Monitor = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 20 20"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="h-6 w-6"
-  >
-    <rect x="3" y="3" width="14" height="10" rx="2" ry="2"></rect>
-    <line x1="7" y1="17" x2="13" y2="17"></line>
-    <line x1="10" y1="13" x2="10" y2="17"></line>
-  </svg>
-)
-
 const Blank = () => <svg className="h-6 w-6" />
 
 const ThemeSwitch = () => {
   const [mounted, setMounted] = useState(false)
-  const { theme, setTheme, resolvedTheme } = useTheme()
+  const { setTheme, resolvedTheme } = useTheme()
 
-  // When mounted on client, now we can show the UI
   useEffect(() => setMounted(true), [])
 
-  const cycleTheme = () => {
-    const themes = ['light', 'dark', 'system']
-    const currentIndex = themes.indexOf(theme || 'system')
-    const nextIndex = (currentIndex + 1) % themes.length
-    setTheme(themes[nextIndex])
+  const toggleTheme = () => {
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
   }
 
   const getIcon = () => {
     if (!mounted) return <Blank />
-
-    if (theme === 'system') {
-      return <Monitor />
-    }
-
     return resolvedTheme === 'dark' ? <Moon /> : <Sun />
   }
 
   return (
     <button
       aria-label="Toggle theme"
-      onClick={cycleTheme}
+      onClick={toggleTheme}
       className="hover:text-primary-500 dark:hover:text-primary-400 flex cursor-pointer items-center justify-center transition-colors"
     >
       {getIcon()}
