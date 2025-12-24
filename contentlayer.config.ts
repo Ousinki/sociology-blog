@@ -10,7 +10,6 @@ import remarkMath from 'remark-math'
 import { remarkAlert } from 'remark-github-blockquote-alert'
 import remarkDirective from 'remark-directive'
 import { remarkDirectiveCallout } from './lib/remark-directive-callout'
-import { remarkPlainCallout } from './lib/remark-plain-callout'
 import { remarkHoverReveal } from './lib/remark-hover-reveal'
 import {
   remarkExtractFrontmatter,
