@@ -10,6 +10,7 @@ import remarkMath from 'remark-math'
 import { remarkAlert } from 'remark-github-blockquote-alert'
 import remarkDirective from 'remark-directive'
 import { remarkDirectiveCallout } from './lib/remark-directive-callout'
+import { remarkPlainCallout } from './lib/remark-plain-callout'
 import { remarkHoverReveal } from './lib/remark-hover-reveal'
 import {
   remarkExtractFrontmatter,
@@ -163,8 +164,8 @@ export default makeSource({
       remarkImgToJsx,
       remarkDirective,
       remarkDirectiveCallout,
-      // remarkPlainCallout, // Temporarily disabled for debugging
-      remarkAlert,
+      remarkPlainCallout, // Handles >[!type] title syntax with custom titles
+      remarkAlert, // Handles standard GitHub alerts like >[!NOTE]
       remarkHoverReveal,
     ],
     rehypePlugins: [
