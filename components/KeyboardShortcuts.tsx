@@ -5,8 +5,8 @@ import { useState, useEffect, useRef } from 'react'
 const shortcuts = [
   { key: 'gg', description: 'Go to top' },
   { key: 'G', description: 'Go to bottom' },
+  { key: 'e', description: 'Toggle weakened text' },
   { key: 'Space', description: 'Toggle shortcuts' },
-  { key: 'Esc', description: 'Close' },
 ]
 
 export default function KeyboardShortcuts() {

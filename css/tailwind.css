@@ -1,3 +1,5 @@
+/* stylelint-disable at-rule-no-unknown */
+/* Disable CSS linter warnings for Tailwind CSS v4 at-rules */
 @import 'tailwindcss';
 @plugin "@tailwindcss/forms";
 @plugin '@tailwindcss/typography';
@@ -189,6 +191,37 @@ input:-webkit-autofill:focus {
 
 .animate-slide-up {
   animation: slideUp 0.3s ease-out;
+}
+
+/* ===== Weakened Text (::text::) ===== */
+.weakened-text {
+  color: var(--color-gray-400);
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease;
+}
+
+.dark .weakened-text {
+  color: var(--color-gray-500);
+}
+
+/* Hidden state for weakened text - collapses space (e key) */
+.weakened-text.hidden-weakened {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  display: inline-block !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 0 !important;
+}
+
+/* Invisible state for weakened text - preserves space (E key) */
+.weakened-text.invisible-weakened {
+  opacity: 0 !important;
+  transition: opacity 0.4s ease;
 }
 
 /* ===== Highlight Mark (==text==) ===== */

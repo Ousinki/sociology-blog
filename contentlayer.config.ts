@@ -13,6 +13,7 @@ import { remarkDirectiveCallout } from './lib/remark-directive-callout'
 import { remarkPlainCallout } from './lib/remark-plain-callout'
 import { remarkHoverReveal } from './lib/remark-hover-reveal'
 import { remarkMarkHighlight } from './lib/remark-mark-highlight'
+import { remarkWeaken } from './lib/remark-weaken'
 import {
   remarkExtractFrontmatter,
   remarkCodeTitles,
@@ -169,6 +170,7 @@ export default makeSource({
       remarkAlert, // Handles standard GitHub alerts like >[!NOTE]
       remarkHoverReveal,
       remarkMarkHighlight,
+      remarkWeaken, // Handles ::text:: syntax for weakened text
     ],
     rehypePlugins: [
       rehypeSlug,
