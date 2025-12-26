@@ -12,6 +12,7 @@ import remarkDirective from 'remark-directive'
 import { remarkDirectiveCallout } from './lib/remark-directive-callout'
 import { remarkPlainCallout } from './lib/remark-plain-callout'
 import { remarkHoverReveal } from './lib/remark-hover-reveal'
+import { remarkMarkHighlight } from './lib/remark-mark-highlight'
 import {
   remarkExtractFrontmatter,
   remarkCodeTitles,
@@ -167,6 +168,7 @@ export default makeSource({
       remarkPlainCallout, // Handles >[!type] title syntax with custom titles
       remarkAlert, // Handles standard GitHub alerts like >[!NOTE]
       remarkHoverReveal,
+      remarkMarkHighlight,
     ],
     rehypePlugins: [
       rehypeSlug,

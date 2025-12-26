@@ -7,7 +7,8 @@
 /* Core theme configuration */
 @theme {
   /* Font families */
-  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+  --font-sans:
+    var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
   /* Colors */
@@ -190,6 +191,18 @@ input:-webkit-autofill:focus {
   animation: slideUp 0.3s ease-out;
 }
 
+/* ===== Highlight Mark (==text==) ===== */
+.highlight-mark {
+  background-color: #fef08a;
+  padding: 0.1em 0.25em;
+  border-radius: 0.2em;
+}
+
+.dark .highlight-mark {
+  background-color: rgba(250, 204, 21, 0.3);
+  color: #fef9c3;
+}
+
 /* ===== Hover Reveal Tooltip ===== */
 .hover-reveal {
   position: relative;
@@ -212,7 +225,9 @@ input:-webkit-autofill:focus {
   white-space: nowrap;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s ease, visibility 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
   z-index: 50;
   pointer-events: auto;
 }
@@ -231,7 +246,7 @@ input:-webkit-autofill:focus {
   transform: translateX(-50%);
   border: 5px solid transparent;
   border-top-color: var(--color-gray-900);
-  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
 }
 
 /* Dark mode tooltip */
@@ -246,7 +261,9 @@ input:-webkit-autofill:focus {
 
 /* ===== Directive Callout Styles ===== */
 @keyframes overflowVisible {
-  to { overflow: visible; }
+  to {
+    overflow: visible;
+  }
 }
 
 .directive-callout {
@@ -263,49 +280,85 @@ input:-webkit-autofill:focus {
 }
 
 /* Callout type colors - background only, no left border */
-.callout-note { 
+.callout-note {
   background: rgba(59, 130, 246, 0.15);
 }
-.callout-tip { 
+.callout-tip {
   background: rgba(16, 185, 129, 0.15);
 }
-.callout-warning { 
+.callout-warning {
   background: rgba(245, 158, 11, 0.15);
 }
-.callout-caution { 
+.callout-caution {
   background: rgba(239, 68, 68, 0.15);
 }
-.callout-important { 
+.callout-important {
   background: rgba(139, 92, 246, 0.15);
 }
-.callout-plain { 
+.callout-plain {
   background: transparent;
 }
 
 /* Fold icon colors for each type */
-.callout-note .fold-icon { color: #3b82f6; }
-.callout-tip .fold-icon { color: #10b981; }
-.callout-warning .fold-icon { color: #f59e0b; }
-.callout-caution .fold-icon { color: #ef4444; }
-.callout-important .fold-icon { color: #8b5cf6; }
-.callout-plain .fold-icon { color: var(--color-gray-500); }
+.callout-note .fold-icon {
+  color: #3b82f6;
+}
+.callout-tip .fold-icon {
+  color: #10b981;
+}
+.callout-warning .fold-icon {
+  color: #f59e0b;
+}
+.callout-caution .fold-icon {
+  color: #ef4444;
+}
+.callout-important .fold-icon {
+  color: #8b5cf6;
+}
+.callout-plain .fold-icon {
+  color: var(--color-gray-500);
+}
 
 /* Title text colors for each type */
-.callout-note .callout-title-inner { color: #3b82f6; }
-.callout-tip .callout-title-inner { color: #10b981; }
-.callout-warning .callout-title-inner { color: #f59e0b; }
-.callout-caution .callout-title-inner { color: #ef4444; }
-.callout-important .callout-title-inner { color: #8b5cf6; }
-.callout-plain .callout-title-inner { color: var(--color-gray-700); }
-.dark .callout-plain .callout-title-inner { color: var(--color-gray-300); }
+.callout-note .callout-title-inner {
+  color: #3b82f6;
+}
+.callout-tip .callout-title-inner {
+  color: #10b981;
+}
+.callout-warning .callout-title-inner {
+  color: #f59e0b;
+}
+.callout-caution .callout-title-inner {
+  color: #ef4444;
+}
+.callout-important .callout-title-inner {
+  color: #8b5cf6;
+}
+.callout-plain .callout-title-inner {
+  color: var(--color-gray-700);
+}
+.dark .callout-plain .callout-title-inner {
+  color: var(--color-gray-300);
+}
 
 /* Dark mode backgrounds */
-.dark .callout-note { background: rgba(59, 130, 246, 0.2); }
-.dark .callout-tip { background: rgba(16, 185, 129, 0.2); }
-.dark .callout-warning { background: rgba(245, 158, 11, 0.2); }
-.dark .callout-caution { background: rgba(239, 68, 68, 0.2); }
-.dark .callout-important { background: rgba(139, 92, 246, 0.2); }
-.dark .callout-plain { 
+.dark .callout-note {
+  background: rgba(59, 130, 246, 0.2);
+}
+.dark .callout-tip {
+  background: rgba(16, 185, 129, 0.2);
+}
+.dark .callout-warning {
+  background: rgba(245, 158, 11, 0.2);
+}
+.dark .callout-caution {
+  background: rgba(239, 68, 68, 0.2);
+}
+.dark .callout-important {
+  background: rgba(139, 92, 246, 0.2);
+}
+.dark .callout-plain {
   background: transparent;
 }
 
@@ -359,11 +412,21 @@ input:-webkit-autofill:focus {
   color: var(--color-primary-500);
 }
 
-.callout-note .callout-icon { color: #3b82f6; }
-.callout-tip .callout-icon { color: #10b981; }
-.callout-warning .callout-icon { color: #f59e0b; }
-.callout-caution .callout-icon { color: #ef4444; }
-.callout-important .callout-icon { color: #8b5cf6; }
+.callout-note .callout-icon {
+  color: #3b82f6;
+}
+.callout-tip .callout-icon {
+  color: #10b981;
+}
+.callout-warning .callout-icon {
+  color: #f59e0b;
+}
+.callout-caution .callout-icon {
+  color: #ef4444;
+}
+.callout-important .callout-icon {
+  color: #8b5cf6;
+}
 
 /* Callout content */
 .callout-content {
@@ -373,7 +436,10 @@ input:-webkit-autofill:focus {
   overflow: hidden;
   max-height: 1000px;
   opacity: 1;
-  transition: max-height 0.2s ease, opacity 0.2s ease, padding 0.2s ease;
+  transition:
+    max-height 0.2s ease,
+    opacity 0.2s ease,
+    padding 0.2s ease;
 }
 
 .callout-content > :first-child {
@@ -425,7 +491,9 @@ input:-webkit-autofill:focus {
 .markdown-alert.collapsible-callout .callout-content {
   display: grid;
   grid-template-rows: 1fr;
-  transition: grid-template-rows 0.2s ease-out, opacity 0.15s ease-out;
+  transition:
+    grid-template-rows 0.2s ease-out,
+    opacity 0.15s ease-out;
   opacity: 1;
 }
 
