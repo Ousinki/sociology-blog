@@ -6,24 +6,52 @@ const shortcuts = [
   { key: 'gg', description: 'Go to top' },
   { key: 'G', description: 'Go to bottom' },
   { key: 'e', description: 'Toggle weakened text' },
+  { key: 's', description: 'Swap ruby text' },
+  { key: 'h', description: 'Toggle ruby visibility' },
+  { key: '⌘I', description: 'Open AI chat' },
   { key: 'Space', description: 'Toggle shortcuts' },
 ]
 
+const chatModels = ['openai', 'claude', 'gemini', 'deepseek']
+
 export default function KeyboardShortcuts() {
   const [isOpen, setIsOpen] = useState(false)
+  const [selectedModel, setSelectedModel] = useState('openai')
   const lastKeyRef = useRef<string>('')
   const lastKeyTimeRef = useRef<number>(0)
 
+  // Load saved model on mount
+  useEffect(() => {
+    const saved = localStorage.getItem('chatModel')
+    if (saved && chatModels.includes(saved)) {
+      setSelectedModel(saved)
+    }
+  }, [])
+
+  // Expose shortcuts panel state globally
+  useEffect(() => {
+    // @ts-expect-error - Global access
+    window.isShortcutsOpen = isOpen
+    return () => {
+      // @ts-expect-error - Cleanup
+      delete window.isShortcutsOpen
+    }
+  }, [isOpen])
+
+  // Save model when changed
+  const handleModelChange = (model: string) => {
+    setSelectedModel(model)
+    localStorage.setItem('chatModel', model)
+  }
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Ignore if in input/textarea
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
         return
       }
 
       const now = Date.now()
 
-      // Handle 'gg' - scroll to top
       if (e.key === 'g') {
         if (lastKeyRef.current === 'g' && now - lastKeyTimeRef.current < 500) {
           e.preventDefault()
@@ -36,7 +64,6 @@ export default function KeyboardShortcuts() {
         return
       }
 
-      // Handle 'G' - scroll to bottom
       if (e.key === 'G' && e.shiftKey) {
         e.preventDefault()
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
@@ -44,7 +71,18 @@ export default function KeyboardShortcuts() {
         return
       }
 
-      // Handle Space - toggle shortcuts panel
+      // Handle ⌘I - toggle AI chat
+      if (e.key === 'i' && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault()
+        // @ts-expect-error - Global function from ChatAssistant
+        if (typeof window.toggleChatAssistant === 'function') {
+          // @ts-expect-error - Global function from ChatAssistant
+          window.toggleChatAssistant()
+        }
+        lastKeyRef.current = ''
+        return
+      }
+
       if (e.key === ' ' && !e.ctrlKey && !e.metaKey) {
         e.preventDefault()
         setIsOpen((prev) => !prev)
@@ -52,14 +90,12 @@ export default function KeyboardShortcuts() {
         return
       }
 
-      // Handle Escape - close panel
       if (e.key === 'Escape') {
         setIsOpen(false)
         lastKeyRef.current = ''
         return
       }
 
-      // Reset last key for other keys
       lastKeyRef.current = ''
     }
 
@@ -102,6 +138,26 @@ export default function KeyboardShortcuts() {
               </span>
             </div>
           ))}
+        </div>
+
+        {/* AI Model Selector */}
+        <div className="mt-4 border-t border-gray-200 pt-4 dark:border-gray-700">
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              AI Chat Model
+            </span>
+            <select
+              value={selectedModel}
+              onChange={(e) => handleModelChange(e.target.value)}
+              className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-700 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"
+            >
+              {chatModels.map((model) => (
+                <option key={model} value={model}>
+                  {model.charAt(0).toUpperCase() + model.slice(1)}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
     </div>

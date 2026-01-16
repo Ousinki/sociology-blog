@@ -14,6 +14,7 @@ import { remarkPlainCallout } from './lib/remark-plain-callout'
 import { remarkHoverReveal } from './lib/remark-hover-reveal'
 import { remarkMarkHighlight } from './lib/remark-mark-highlight'
 import { remarkWeaken } from './lib/remark-weaken'
+import remarkCjkFriendly from 'remark-cjk-friendly'
 import {
   remarkExtractFrontmatter,
   remarkCodeTitles,
@@ -159,6 +160,7 @@ export default makeSource({
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [
+      remarkCjkFriendly, // Must be first to handle CJK emphasis at parsing level
       remarkExtractFrontmatter,
       remarkGfm,
       remarkCodeTitles,
@@ -168,9 +170,9 @@ export default makeSource({
       remarkDirectiveCallout,
       remarkPlainCallout, // Handles >[!type] title syntax with custom titles
       remarkAlert, // Handles standard GitHub alerts like >[!NOTE]
+      remarkWeaken, // Handles ::text:: syntax for weakened text - must be before remarkHoverReveal
       remarkHoverReveal,
       remarkMarkHighlight,
-      remarkWeaken, // Handles ::text:: syntax for weakened text
     ],
     rehypePlugins: [
       rehypeSlug,

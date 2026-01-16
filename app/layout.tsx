@@ -12,6 +12,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
 import KeyboardShortcuts from '@/components/KeyboardShortcuts'
+import ChatAssistant from '@/components/ChatAssistant'
 
 const space_grotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -106,6 +107,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Footer />
           </SectionContainer>
           <KeyboardShortcuts />
+          <ChatAssistant />
         </ThemeProviders>
       </body>
     </html>

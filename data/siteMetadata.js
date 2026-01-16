@@ -1,7 +1,7 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
   title: '社会学研究博客',
-  author: '您的姓名',
+  author: 'Ousinki',
   headerTitle: '社会学研究',
   description: '探索社会现象，分析社会趋势，用数据讲述社会故事',
   language: 'zh-CN',
