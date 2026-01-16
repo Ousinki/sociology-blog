@@ -30,10 +30,8 @@ export default function KeyboardShortcuts() {
 
   // Expose shortcuts panel state globally
   useEffect(() => {
-    // @ts-expect-error - Global access
     window.isShortcutsOpen = isOpen
     return () => {
-      // @ts-expect-error - Cleanup
       delete window.isShortcutsOpen
     }
   }, [isOpen])
@@ -74,9 +72,7 @@ export default function KeyboardShortcuts() {
       // Handle ⌘I - toggle AI chat
       if (e.key === 'i' && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
-        // @ts-expect-error - Global function from ChatAssistant
         if (typeof window.toggleChatAssistant === 'function') {
-          // @ts-expect-error - Global function from ChatAssistant
           window.toggleChatAssistant()
         }
         lastKeyRef.current = ''
